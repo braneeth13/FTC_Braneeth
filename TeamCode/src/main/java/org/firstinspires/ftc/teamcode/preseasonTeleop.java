@@ -1,0 +1,149 @@
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
+@TeleOp(name="preseasonTeleop", group="Linear Opmode")
+//@Disabled
+public class preseasonTeleop {
+
+
+    private ElapsedTime runtime = new ElapsedTime();
+
+    // For Gamepad 1
+    private DcMotor frontLeft = null;
+    private DcMotor frontRight = null;
+    private DcMotor backLeft = null;
+    private DcMotor backRight = null;
+
+    // For Gamepad 2
+
+    /*
+    private DcMotor hangArm = null;
+    private Servo leftArm = null;
+    private Servo rightArm = null;
+    */
+
+
+
+
+
+    @Override
+    public void runOpMode() throws InterruptedException {
+        telemetry.addData("Status", "Initialized");
+        telemetry.update();
+
+        //For Gamepad 1
+        frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
+        frontRight = hardwareMap.get(DcMotor.class, "frontRight");
+        backLeft = hardwareMap.get(DcMotor.class, "backLeft");
+        backRight = hardwareMap.get(DcMotor.class, "backRight");
+
+        // hangArm = hardwareMap.get(DcMotor.class, "hang_arm");
+        // leftArm = hardwareMap.get(Servo.class, "left_arm");
+        // rightArm = hardwareMap.get(Servo.class, "right_arm");
+
+
+
+        frontLeft.setDirection(DcMotor.Direction.REVERSE);
+        frontRight.setDirection(DcMotor.Direction.REVERSE);
+        backLeft.setDirection(DcMotor.Direction.REVERSE);
+        backRigjht.setDirection((Servo.Direction.REVERSE));
+
+
+        waitForStart();
+        runtime.reset();
+
+        //gamepad 1
+        while (opModeIsActive()) {
+
+            // double leftDrivePower = gamepad1.left_stick_y;
+            // double rightDrivePower = gamepad1.right_stick_y;
+
+
+
+            boolean forward = gamepad1.y;
+            boolean backward = gamepad1.a;
+            boolean right = gamepad1.b;
+            boolean left = gamepad1.x;
+            double speedAdjust = 0.3;
+            boolean increase = gamepad1.dpad_up;
+            boolean decrease = gamepad1.dpad_down;
+        }
+    }
+
+    /*public void motorDrive(double speedAdjust) {
+        frontLeft.setPower(speedAdjust);
+        frontRight.setPower(speedAdjust);
+        backLeft.setPower (speedAdjust);
+        backRight.setPower(speedAdjust);
+
+    }
+    */
+
+    // Add max and minimum
+    public void speed() {
+        if(increase) {
+            speedAdjust = speedAdjust + 0.1;
+        }
+
+        if(decrease) {
+            speedAdjust = speedAdjust - 0.1;
+        }
+
+    }
+
+    /*
+        public void mecccanumFinal (){
+        //Divider for Left and Right Strafe
+        if(gamepad1.right_bumper) {
+            leftBDrive.setPower(-1);
+            leftFDrive.setPower(1);
+            rightBDrive.setPower(1);
+            rightFDrive.setPower(-1);
+
+        }
+        if(gamepad1.left_bumper) {
+            leftFDrive.setPower(-1);
+            leftBDrive.setPower(1);
+            rightFDrive.setPower(1);
+            rightBDrive.setPower(-1);
+        }
+    }
+    */
+
+    public void movements(boolean forward, boolean backward, boolean right, boolean left, double speedAdjust) {
+        while (forward) {
+            frontLeft.setPower(-speedAdjust);
+            frontRight.setPower(-speedAdjust);
+            backLeft.setPower(-speedAdjust);
+            backRight.setPower(-speedAdjust);
+            break;
+        }
+        while (backward) {
+            frontLeft.setPower(speedAdjust);
+            frontRight.setPower(speedAdjust);
+            backLeft.setPower(speedAdjust);
+            backRight.setPower(speedAdjust);
+
+            break;
+        }
+        while (right) {
+            frontLeft.setPower(-speedAdjust);
+            frontRight.setPower(speedAdjust);
+            backLeft.setPower(speedAdjust);
+            backRight.setPower(-speedAdjust);
+            break;
+        }
+        while (slowForward) {
+            frontLeft.setPower(speedAdjust);
+            frontRight.setPower(-speedAdjust);
+            backLeft.setPower(-speedAdjust);
+            backRight.setPower(speedAdjust);
+            break;
+        }
+    }
+}
