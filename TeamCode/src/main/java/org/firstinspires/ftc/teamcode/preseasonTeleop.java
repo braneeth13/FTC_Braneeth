@@ -67,7 +67,7 @@ public class preseasonTeleop {
             boolean leftDiagonal = gamepad1.left_bumper
             
             
-            movements(forward, backward, right, left);
+            movements(forward, backward, right, left, leftDiagonal, rightDiagonal);
                 
               
         }
