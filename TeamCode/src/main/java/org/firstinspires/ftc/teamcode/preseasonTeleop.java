@@ -95,8 +95,8 @@ public class preseasonTeleop {
     }
     */
     //Methods movement, has all the conditions for buttons being pressed and then the action of the wheel motors 
-    public void movements(boolean forward, boolean backward, boolean right, boolean left, boolean rightDiagonal, boolean leftDiagona) {
-        //Forward = when y pressed robot wheels spin neg reverse
+    public void movements(boolean forward, boolean backward, boolean right, boolean left, boolean rightDiagonal, boolean leftDiagonal) {
+        
         while (forward) {
             frontLeft.setPower(-0.5);
             frontRight.setPower(-0.5);
