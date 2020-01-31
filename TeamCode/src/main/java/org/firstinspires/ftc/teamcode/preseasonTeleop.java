@@ -63,6 +63,8 @@ public class preseasonTeleop {
             boolean backward = gamepad1.a;
             boolean right = gamepad1.b;
             boolean left = gamepad1.x;
+            boolean rightDiagonal = gamepad1.right_bumper
+            boolean leftDiagonal = gamepad1.left_bumper
             
             
             movements(forward, backward, right, left);
@@ -91,7 +93,7 @@ public class preseasonTeleop {
     }
     */
 
-    public void movements(boolean forward, boolean backward, boolean right, boolean left) {
+    public void movements(boolean forward, boolean backward, boolean right, boolean left, boolean rightDiagonal, boolean leftDiagona) {
         while (forward) {
             frontLeft.setPower(-0.5);
             frontRight.setPower(-0.5);
@@ -119,6 +121,16 @@ public class preseasonTeleop {
             frontRight.setPower(-0.5);
             backLeft.setPower(-0.5);
             backRight.setPower(0.5);
+            break;
+        }
+        while (rightDiagonal) {
+            frontLeft.setPower(-0.5);
+            backRight.setPower(-0.5);
+            break;
+        }
+        while (leftDiagonal) {
+            frontRight.setPower(-0.5);
+            backLeft.setPower(-0.5);
             break;
         }
     }
