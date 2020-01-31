@@ -18,6 +18,7 @@ public class preseasonTeleop {
     private DcMotor frontRight = null;
     private DcMotor backLeft = null;
     private DcMotor backRight = null;
+    private DcMotor armMotor = null;
 
     // For Gamepad 2
 
@@ -28,8 +29,6 @@ public class preseasonTeleop {
     */
 
     @Override
-    
-    //main
     public void runOpMode() throws InterruptedException {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -39,6 +38,7 @@ public class preseasonTeleop {
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
+        armMotor = hardwareMap.get(DcMotor.class, "arm");
 
         // hangArm = hardwareMap.get(DcMotor.class, "hang_arm");
         // leftArm = hardwareMap.get(Servo.class, "left_arm");
@@ -49,7 +49,9 @@ public class preseasonTeleop {
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         frontRight.setDirection(DcMotor.Direction.REVERSE);
         backLeft.setDirection(DcMotor.Direction.REVERSE);
-        backRigjht.setDirection((Servo.Direction.REVERSE));
+        backRight.setDirection(DcMotor.Direction.REVERSE);
+        armMotor.setDirection(DcMotor.Direction.REVERSE);
+        
 
 
         waitForStart();
@@ -65,11 +67,12 @@ public class preseasonTeleop {
             boolean backward = gamepad1.a;
             boolean right = gamepad1.b;
             boolean left = gamepad1.x;
-            boolean rightDiagonal = gamepad1.right_bumper
-            boolean leftDiagonal = gamepad1.left_bumper
+            boolean rightDiagonal = gamepad1.right_bumper;
+            boolean leftDiagonal = gamepad1.left_bumper;
+            float arm = gamepad1.right_trigger;
             
             
-            movements(forward, backward, right, left, leftDiagonal, rightDiagonal);
+            movements(forward, backward, right, left, leftDiagonal, rightDiagonal, arm);
                 
               
         }
@@ -94,9 +97,8 @@ public class preseasonTeleop {
         }
     }
     */
-    //Methods movement, has all the conditions for buttons being pressed and then the action of the wheel motors 
-    public void movements(boolean forward, boolean backward, boolean right, boolean left, boolean rightDiagonal, boolean leftDiagonal) {
-        
+
+    public void movements(boolean forward, boolean backward, boolean right, boolean left, boolean rightDiagonal, boolean leftDiagonal, float arm) {
         while (forward) {
             frontLeft.setPower(-0.5);
             frontRight.setPower(-0.5);
@@ -134,6 +136,10 @@ public class preseasonTeleop {
         while (leftDiagonal) {
             frontRight.setPower(-0.5);
             backLeft.setPower(-0.5);
+            break;
+        }
+        while (arm) {
+            armMotor.setPower(0.2)
             break;
         }
     }
