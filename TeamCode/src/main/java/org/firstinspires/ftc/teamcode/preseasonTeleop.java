@@ -18,7 +18,8 @@ public class preseasonTeleop {
     private DcMotor frontRight = null;
     private DcMotor backLeft = null;
     private DcMotor backRight = null;
-    private DcMotor armMotor = null;
+   //for arm motor
+   // private DcMotor armMotor = null;
 
     // For Gamepad 2
 
