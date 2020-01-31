@@ -99,7 +99,7 @@ public class preseasonTeleop {
     }
     */
 
-    public void movements(boolean forward, boolean backward, boolean right, boolean left, boolean rightDiagonal, boolean leftDiagonal, float arm) {
+    public void movements(boolean forward, boolean backward, boolean right, boolean left, boolean rightDiagonal, boolean leftDiagonal, /*float arm*/) {
         while (forward) {
             frontLeft.setPower(-0.5);
             frontRight.setPower(-0.5);
@@ -139,9 +139,10 @@ public class preseasonTeleop {
             backLeft.setPower(-0.5);
             break;
         }
-        while (arm) {
+       /* while (arm) {
             armMotor.setPower(0.2)
             break;
         }
+        */
     }
 }
