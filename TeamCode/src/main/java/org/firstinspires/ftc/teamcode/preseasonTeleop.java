@@ -70,10 +70,10 @@ public class preseasonTeleop {
             boolean left = gamepad1.x;
             boolean rightDiagonal = gamepad1.right_bumper;
             boolean leftDiagonal = gamepad1.left_bumper;
-            float arm = gamepad1.right_trigger;
+            //float arm = gamepad1.right_trigger;
             
             
-            movements(forward, backward, right, left, leftDiagonal, rightDiagonal, arm);
+            movements(forward, backward, right, left, leftDiagonal, rightDiagonal, /*arm*/;
                 
               
         }
