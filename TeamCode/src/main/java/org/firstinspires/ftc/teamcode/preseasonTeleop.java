@@ -100,6 +100,8 @@ public class preseasonTeleop {
     */
 
     public void movements(boolean forward, boolean backward, boolean right, boolean left, boolean rightDiagonal, boolean leftDiagonal, /*float arm*/) {
+        
+        //while vs if?
         while (forward) {
             frontLeft.setPower(-0.5);
             frontRight.setPower(-0.5);
