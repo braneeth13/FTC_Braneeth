@@ -117,6 +117,11 @@ public class BasicOpMode_Iterative extends OpMode
         left_stick_Y = gamepad1.left_stick_Y;
         right_stick_X = gamepad1.left_stick_X;
         right_stick_Y = gamepad1.leftstick_Y;
+        
+        // Setting up Null Zone for the robot
+         if (power < 0.05 & power > -0.05) {
+             power = 0;
+         }
 
         // allows robot to move fowards and backwards
         if (left_stick_X = 0) {
