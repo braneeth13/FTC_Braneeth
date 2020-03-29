@@ -148,6 +148,17 @@ public class TeleopModeDrive extends OpMode
         rightBackMotor.setPower(power);
     }
 
+    void SpinCounterClockwise(double power) {
+        leftFrontMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightFrontMotor.setDirection(DcMotor.Direction.REVERSE);
+        leftBackMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightBackMotor.setDirection(DcMotor.Direction.REVERSE);
+        leftFrontMotor.setPower(power);
+        leftBackMotor.setPower(power);
+        rightFrontMotor.setPower(power);
+        rightBackMotor.setPower(power);
+    }
+    
     void StrafeCornerLeft(double power) {
         leftFrontMotor.setDirection(DcMotor.Direction.REVERSE);
         rightBackMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -219,26 +230,30 @@ public class TeleopModeDrive extends OpMode
         while (leftDpadPressed = true)
         {
             StrafeLeft(double power);
+            break;
         }
-        break;
+        
 
         while (dpad_right = true)
         {
             moveRegular(power);
+            break;
         }
-        break;
+        
 
         while (dpad_down = true)
         {
             StrafeCornerRight(double power);
+            break;
         }
-        break;
+        
 
         while (dpad_up = true)
         {
             StrafeCornerLeft(double power);
+            break;
         }
-        break;
+        
 
         if ((dpad_left = true) && (dpad_right = true)) || ((dpad_down = true) && (dpad_up = true))
         {
